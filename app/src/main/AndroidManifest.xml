@@ -23,7 +23,11 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
-
+        <activity android:name=".KoreaActivity"/>
+        <activity android:name=".ChinaActivity"/>
+        <activity android:name=".JapanActivity"/>
+        <activity android:name=".WesternActivity"/>
+        <activity android:name=".EtcActivity"/>
     </application>
 
 </manifest>
