@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 
 public class KoreaActivity extends AppCompatActivity {
@@ -45,6 +47,7 @@ public class KoreaActivity extends AppCompatActivity {
 
         CustomAdapter customAdapter = new CustomAdapter(testDataSet);
         recyclerView.setAdapter(customAdapter); // 어댑터 설정
+
 
 
     }
