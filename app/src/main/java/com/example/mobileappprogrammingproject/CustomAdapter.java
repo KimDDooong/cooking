@@ -1,6 +1,8 @@
 package com.example.mobileappprogrammingproject;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -61,8 +63,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
-                        //Toast.makeText(view.getContext(), position+"번째 텍스트 뷰 클릭", Toast.LENGTH_SHORT).show();
-
+                        String data = localDataSet.get(position).getTitle();
+                        String description = getDescriptionFromResources(view.getContext(), data);
+                        showPopup(view.getContext(), description, data);
                     }
                 }
             });
@@ -85,17 +88,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
                             // 데이터베이스에서 항목을 로드하고 어댑터에 설정
                             todayAdapter = new TodayAdapter(new ArrayList<>());
-
                             ArrayList<TodayItem> items = DatabaseHelper.loadItemsFromDatabase(databaseHelper);
                             todayAdapter.setData(items);
                             todayAdapter.notifyDataSetChanged();
                         } else {
-                            // 삽입 작업이 실패한 경우
-                           // Toast.makeText(view.getContext(), "데이터 삽입에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                            // 중복된 데이터인 경우
+                            Toast.makeText(view.getContext(), "이미 중복된 데이터입니다.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
             });
+
 
 
         }
@@ -143,5 +146,26 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         return localDataSet.size();
     }
 
+    private static String getDescriptionFromResources(Context context, String data) {
+        int resourceId = context.getResources().getIdentifier(data, "string", context.getPackageName());
+        if (resourceId != 0) {
+            return context.getString(resourceId);
+        } else {
+            return "No description available";
+        }
+    }
 
+    private static void showPopup(Context context, String description, String name) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(name);
+        builder.setMessage(description);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // 팝업 창 닫기
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }

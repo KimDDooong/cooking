@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "322792365267",
+    "project_id": "mycooki",
+    "storage_bucket": "mycooki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322792365267:android:fb0865065f25998d398826",
+        "android_client_info": {
+          "package_name": "com.example.mobileappprogrammingproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322792365267-1673gig0v4kk0k2ifn0o1q2go9ma2kha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mobileappprogrammingproject",
+            "certificate_hash": "b4510fe227b953692539eec77a8462e63d644622"
+          }
+        },
+        {
+          "client_id": "322792365267-ujicdg8ug9hr0pkgc23k9uhp4p66e8j5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUfJgAkLc2-8z7k8L0CLGXWpXQUPpOfB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322792365267-ujicdg8ug9hr0pkgc23k9uhp4p66e8j5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

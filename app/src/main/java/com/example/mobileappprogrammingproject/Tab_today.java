@@ -18,6 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +31,9 @@ public class Tab_today extends Fragment {
     private TodayAdapter todayAdapter;
 
     private DatabaseHelper databaseHelper;
-
+    private Fragment_kimchijjigae fragment_kimchijjigae;
+    private Fragment_budaeijjigae fragment_budaeijjigae;
+    private FragmentManager fragmentManager;
     @SuppressLint("NotifyDataSetChanged")
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab_today, container, false);
@@ -56,7 +60,27 @@ public class Tab_today extends Fragment {
         todayAdapter.setOnItemClickListener(new TodayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(TodayItem item) {
-                showPopup(item.getName());
+                if (fragment_kimchijjigae == null) {
+                    fragment_kimchijjigae = new Fragment_kimchijjigae();
+                }
+                if (fragment_budaeijjigae == null) {
+                    fragment_budaeijjigae = new Fragment_budaeijjigae();
+                }
+
+                String food = item.getName();
+                fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                switch (food) {
+                    case "김치찌개":fragmentTransaction.replace(R.id.fragment_container, fragment_kimchijjigae);
+                                    break;
+                    case "부대찌개":fragmentTransaction.replace(R.id.fragment_container, fragment_budaeijjigae);
+                        break;
+                }
+
+
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
             }
 
             @Override

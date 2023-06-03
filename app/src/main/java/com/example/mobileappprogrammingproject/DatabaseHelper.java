@@ -54,6 +54,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public long insertData(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
+
+        // 중복 데이터 검사
+        if (checkDuplicate(name)) {
+            db.close();
+            return -1; // 중복된 데이터이므로 -1을 반환
+        }
+
         ContentValues values = new ContentValues();
         values.put("name", name);
         long result = db.insert("items", null, values);
@@ -84,5 +91,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         cursor.close();
         return itemList;
+    }
+
+    private boolean checkDuplicate(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"name"};
+        String selection = "name=?";
+        String[] selectionArgs = {name};
+        Cursor cursor = db.query("items", columns, selection, selectionArgs, null, null, null);
+        boolean duplicate = cursor.getCount() > 0;
+        cursor.close();
+        return duplicate;
     }
 }
