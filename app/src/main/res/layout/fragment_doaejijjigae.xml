@@ -21,14 +21,14 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:src="@drawable/flagofchina" />
+                android:src="@drawable/flagofjapan" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="김치찌개" />
+                android:text="돼지찌개" />
 
             <LinearLayout
                 android:layout_width="406dp"

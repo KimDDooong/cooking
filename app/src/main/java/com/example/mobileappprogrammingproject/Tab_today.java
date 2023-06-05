@@ -32,7 +32,9 @@ public class Tab_today extends Fragment {
 
     private DatabaseHelper databaseHelper;
     private Fragment_kimchijjigae fragment_kimchijjigae;
+    private Fragment_doinjangjjigae fragment_doinjangjjigae;
     private Fragment_budaeijjigae fragment_budaeijjigae;
+    private Fragment_doaejijjigae fragment_doaejijjigae;
     private FragmentManager fragmentManager;
     @SuppressLint("NotifyDataSetChanged")
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,6 +68,13 @@ public class Tab_today extends Fragment {
                 if (fragment_budaeijjigae == null) {
                     fragment_budaeijjigae = new Fragment_budaeijjigae();
                 }
+                if (fragment_doinjangjjigae == null) {
+                    fragment_doinjangjjigae = new Fragment_doinjangjjigae();
+                }
+
+                if (fragment_doaejijjigae == null) {
+                    fragment_doaejijjigae = new Fragment_doaejijjigae();
+                }
 
                 String food = item.getName();
                 fragmentManager = requireActivity().getSupportFragmentManager();
@@ -74,6 +83,10 @@ public class Tab_today extends Fragment {
                     case "김치찌개":fragmentTransaction.replace(R.id.fragment_container, fragment_kimchijjigae);
                                     break;
                     case "부대찌개":fragmentTransaction.replace(R.id.fragment_container, fragment_budaeijjigae);
+                        break;
+                    case "된장찌개":fragmentTransaction.replace(R.id.fragment_container, fragment_doinjangjjigae);
+                        break;
+                    case "돼지찌개":fragmentTransaction.replace(R.id.fragment_container, fragment_doaejijjigae);
                         break;
                 }
 

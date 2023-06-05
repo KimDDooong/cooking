@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="#2175F3"
+            android:background="#EFE1B7"
             android:gravity="center_vertical|center"
             android:textColor="@color/black"
             android:textSize="30sp" />

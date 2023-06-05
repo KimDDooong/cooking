@@ -14,7 +14,7 @@
         android:textSize="32dp"
         android:textColor="#FFFFFFFF"
         android:padding="8dp"
-        android:background="#FF3F3F3F"
+        android:background="#B1B0AE"
         android:gravity="center"/>
     <FrameLayout
         android:id="@+id/fragment_container"
